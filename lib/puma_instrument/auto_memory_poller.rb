@@ -15,7 +15,7 @@ module PumaInstrument
 
       Thread.new do
         while @running
-          @poller.poll
+          @poller.poll(statsd_path)
           sleep @timeout
         end
       end
