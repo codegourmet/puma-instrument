@@ -1,3 +1,5 @@
+require 'get_process_mem'
+
 module PumaInstrument
   class Poller
 
