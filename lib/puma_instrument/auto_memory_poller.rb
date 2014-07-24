@@ -1,5 +1,3 @@
-require 'puma_instrument/memory_poller'
-
 module PumaInstrument
   class AutoMemoryPoller
 

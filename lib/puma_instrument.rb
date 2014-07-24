@@ -1,5 +1,5 @@
 require 'statsd-instrument'
-require 'puma_instrument/auto_memory_poller'
+require 'get_process_mem'
 
 module PumaInstrument
   extend self
@@ -18,3 +18,7 @@ module PumaInstrument
     AutoMemoryPoller.new(self.frequency, self.statsd_path).start
   end
 end
+
+require 'puma_instrument/memory_poller'
+require 'puma_instrument/auto_memory_poller'
+require 'puma_worker_killer/version'
