@@ -3,7 +3,7 @@ module PumaInstrument
 
     def initialize(timeout, statsd_path)
       @timeout = timeout # seconds
-      @poller = MemoryPoller.new
+      @poller = MemoryPoller.new(statsd_path)
       @running = false
       @statsd_path = statsd_path
     end
@@ -13,7 +13,7 @@ module PumaInstrument
 
       Thread.new do
         while @running
-          @poller.poll(statsd_path)
+          @poller.poll
           sleep @timeout
         end
       end

@@ -1,5 +1,5 @@
 module PumaInstrument
-  class Poller
+  class MemoryPoller
 
     def initialize(statsd_path)
       @statsd_path = statsd_path
@@ -17,6 +17,7 @@ module PumaInstrument
       def get_puma_memory
         return nil unless defined?(Puma::Cluster)
         master = ObjectSpace.each_object(Puma::Cluster).map { |obj| obj }.first
+        return nil if !master
 
         workers = master.instance_variable_get("@workers") || []
         return nil if workers.empty?

@@ -15,10 +15,10 @@ module PumaInstrument
 
   def start
     StatsD.backend = self.statsd_backend
-    AutoMemoryPoller.new(self.frequency, self.statsd_path).start
+    ::PumaInstrument::AutoMemoryPoller.new(self.frequency, self.statsd_path).start
   end
 end
 
-require 'puma_instrument/memory_poller'
 require 'puma_instrument/auto_memory_poller'
-require 'puma_worker_killer/version'
+require 'puma_instrument/memory_poller'
+require 'puma_instrument/version'
